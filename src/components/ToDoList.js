@@ -13,7 +13,7 @@ function ToDoList(){
     }
 
     const addTask = ()=>{
-        if(task.trim() !== ""){
+        if(task.trim() !== "" && tasks.includes(task.text)){
             setTasks(prevTasks => [...prevTasks, {text:task,checkedValue:false,flag:true}]);
             setTask("")
         }
@@ -45,6 +45,21 @@ function ToDoList(){
         ))
     }
 
+    const moveUp = (index) =>{
+        if(index>0){
+             const update = [...tasks];
+            [update[index],update[index-1]] = [update[index-1],update[index]]
+            setTasks(update);
+        }
+    }
+    const moveDown = (index) =>{
+        if(index<tasks.length-1){
+             const update = [...tasks];
+            [update[index],update[index+1]] = [update[index+1] , update[index]]
+            setTasks(update);
+        }
+    }
+    
     
 
     return(
@@ -67,8 +82,8 @@ function ToDoList(){
                                     <>
                                     {task.flag === true ? <button className='edit-button' onClick={()=>editTask(index)}>EDIT</button> : <button className='edit-button' onClick={()=>editTask(index)}>SAVE</button> }
                                         
-                                        <button className='up-button'>UP</button>
-                                        <button className='down-button'>DOWN</button>
+                                        <button className='up-button' onClick={()=>moveUp(index)}>UP</button>
+                                        <button className='down-button' onClick={()=>moveDown(index)}>DOWN</button>
                                         <button className='delete-button'>DELETE</button>
                                     </>
                                 ):"completed"}
