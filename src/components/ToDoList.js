@@ -5,7 +5,7 @@ function ToDoList(){
 
     const [task,setTask] = useState("");
 
-    const [tasks,setTasks] = useState([]);
+    const [tasks,setTasks] = useState([{text:"dkkdd",checkedValue:false,flag:true}]);
 
 
     const newTask = (event)=>{
