@@ -14,7 +14,7 @@ function ToDoList(){
 
     const addTask = ()=>{
         if(task.trim() !== ""){
-            setTasks(prevTasks => [...prevTasks, {text:task,checkedValue:false,flag:false}]);
+            setTasks(prevTasks => [...prevTasks, {text:task,checkedValue:false,flag:true}]);
             setTask("")
         }
     }
